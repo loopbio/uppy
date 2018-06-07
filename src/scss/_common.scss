@@ -188,6 +188,29 @@
     box-shadow: 0 0 1px 1px rgba($color-cornflower-blue, 0.5);
   }
 
+// Select
+
+.uppy-c-textSelect {
+  background: #ffffff;
+  border: 1px solid rgba($color-gray, 0.5);
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 6px 8px;
+}
+
+.uppy-Dashboard--wide .uppy-c-textSelect {
+  font-size: 15px;
+  line-height: 1.8;
+  padding: 8px 12px;
+}
+
+.uppy-c-textSelect:focus {
+  border-color: $color-cornflower-blue;
+  outline: none;
+  box-shadow: 0 0 1px 1px rgba($color-cornflower-blue, 0.5);
+}
+
 // Buttons
 
 .uppy-c-btn {

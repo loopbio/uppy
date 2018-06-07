@@ -38,7 +38,7 @@ module.exports = class FileCard extends Component {
         })
         return <fieldset class="uppy-DashboardFileCard-fieldset">
           <label class="uppy-DashboardFileCard-label">{field.name}</label>
-          <select class="uppy-c-textInput uppy-DashboardFileCard-input"
+          <select class="uppy-c-textSelect uppy-DashboardFileCard-input"
             type="text"
             data-name={field.id}
             value={file.meta[field.id]}
