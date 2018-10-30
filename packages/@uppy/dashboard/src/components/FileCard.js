@@ -40,19 +40,39 @@ class FileCard extends Component {
   renderMetaFields (file) {
     const metaFields = this.props.metaFields || []
     return metaFields.map((field, i) => {
-      return <fieldset class="uppy-DashboardFileCard-fieldset">
-        <label class="uppy-DashboardFileCard-label">{field.name}</label>
-        <input class="uppy-c-textInput uppy-DashboardFileCard-input"
-          type="text"
-          data-name={field.id}
-          value={file.meta[field.id]}
-          placeholder={field.placeholder}
-          onkeyup={this.tempStoreMetaOrSubmit}
-          onkeydown={this.tempStoreMetaOrSubmit}
-          onkeypress={this.tempStoreMetaOrSubmit}
-          ref={(el) => {
-            if (i === 0) this.firstInput = el
-          }} /></fieldset>
+      if (field.type === 'select') {
+        const radioOptions = field.options.map((opt, i) => {
+          return <option key={i} value={opt.value} label={opt.label}>{opt.label}</option>
+        })
+        const selected = (field.options.find(x => x.selected) || field.options[0]).value
+        return <fieldset class="uppy-DashboardFileCard-fieldset">
+          <label class="uppy-DashboardFileCard-label">{field.name}</label>
+          <select class="uppy-c-textSelect uppy-DashboardFileCard-input"
+            type="text"
+            data-name={field.id}
+            value={selected}
+            onchange={this.tempStoreMetaOrSubmit}
+            onkeyup={this.tempStoreMetaOrSubmit}
+            onkeydown={this.tempStoreMetaOrSubmit}
+            onkeypress={this.tempStoreMetaOrSubmit}>
+            {radioOptions}
+          </select>
+        </fieldset>
+      } else {
+        return <fieldset class="uppy-DashboardFileCard-fieldset">
+          <label class="uppy-DashboardFileCard-label">{field.name}</label>
+          <input class="uppy-c-textInput uppy-DashboardFileCard-input"
+            type="text"
+            data-name={field.id}
+            value={file.meta[field.id]}
+            placeholder={field.placeholder}
+            onkeyup={this.tempStoreMetaOrSubmit}
+            onkeydown={this.tempStoreMetaOrSubmit}
+            onkeypress={this.tempStoreMetaOrSubmit}
+            ref={(el) => {
+              if (i === 0) this.firstInput = el
+            }} /></fieldset>
+      }
     })
   }
 
