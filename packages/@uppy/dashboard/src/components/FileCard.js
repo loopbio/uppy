@@ -44,13 +44,12 @@ class FileCard extends Component {
         const radioOptions = field.options.map((opt, i) => {
           return <option key={i} value={opt.value} label={opt.label}>{opt.label}</option>
         })
-        const selected = (field.options.find(x => x.selected) || field.options[0]).value
         return <fieldset class="uppy-DashboardFileCard-fieldset">
           <label class="uppy-DashboardFileCard-label">{field.name}</label>
           <select class="uppy-u-reset uppy-c-textSelect uppy-DashboardFileCard-input"
             type="text"
             data-name={field.id}
-            value={selected}
+            value={file.meta[field.id]}
             onchange={this.tempStoreMetaOrSubmit}
             onkeyup={this.tempStoreMetaOrSubmit}
             onkeydown={this.tempStoreMetaOrSubmit}
